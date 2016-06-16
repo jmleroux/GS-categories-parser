@@ -1,0 +1,20 @@
+{
+    "name": "jmleroux/GS-category-parser",
+    "license": "MIT",
+    "type": "project",
+    "description": "Simple parser for Google Shopping categories",
+    "require": {
+        "php": ">=5.5",
+        "symfony/finder": "@stable",
+        "symfony/config": "@stable",
+        "symfony/console": "@stable",
+        "symfony/yaml": "@stable",
+        "box/spout": "@stable"
+    },
+    "autoload": {
+        "psr-4": { "": "src/" }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}

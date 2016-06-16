@@ -1,0 +1,1 @@
+# Google Shopping categories parser
