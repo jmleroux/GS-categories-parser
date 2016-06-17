@@ -30,6 +30,12 @@ class GsParseCommand extends Command
             ->setName('jmleroux:google-shopping:parse-categories')
             ->setDescription('Parse Google Shopping categories')
             ->addArgument(
+                'locale',
+                InputArgument::OPTIONAL,
+                'Input locale',
+                'en-US'
+            )
+            ->addArgument(
                 'workdir',
                 InputArgument::OPTIONAL,
                 'work directory'
@@ -40,10 +46,11 @@ class GsParseCommand extends Command
     {
         $returnCode = 0;
 
+        $locale = $input->getArgument('locale');
         $workdir = $input->getArgument('workdir') ? : $this->workdir;
 
         $loader = new Loader($workdir);
-        $filepath = $loader->load('en-US');
+        $filepath = $loader->load($locale);
         
         $reader = new Reader();
         $categories = $reader->read($filepath);
