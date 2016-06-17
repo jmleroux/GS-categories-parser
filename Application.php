@@ -1,6 +1,6 @@
 <?php
 
-use Jmleroux\Command\GsParseCommand;
+use Jmleroux\GsParseCommand;
 use Symfony\Component\Console\Application as BaseApplication;
 
 /**
