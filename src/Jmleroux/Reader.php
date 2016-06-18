@@ -32,7 +32,6 @@ class Reader
         $reader->close();
 
         return $this->categories;
-
     }
 
     /**
@@ -40,6 +39,10 @@ class Reader
      */
     private function parseRow(array $data)
     {
+        if (0 === strpos($data[0], '#')) {
+            return;    
+        }
+        
         list($id, $rootLabel) = explode(' - ', $data[0]);
 
         if (null === $rootLabel) {

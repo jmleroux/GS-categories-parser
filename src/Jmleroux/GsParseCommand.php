@@ -51,15 +51,16 @@ class GsParseCommand extends Command
 
         $loader = new Loader($workdir);
         $filepath = $loader->load($locale);
+        $output->writeln('<info>File loaded.</info>');
         
         $reader = new Reader();
         $categories = $reader->read($filepath);
-
         $message = sprintf('<info>Read done.</info> Parsed %d categories', count($categories));
         $output->writeln($message);
 
         $writer = new CsvWriter();
         $writer->write($categories, $workdir);
+        $output->writeln('<info>Write done.</info>');
 
         return $returnCode;
     }
