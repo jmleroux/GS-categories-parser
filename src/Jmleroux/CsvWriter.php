@@ -12,10 +12,11 @@ class CsvWriter implements WriterInterface
     public function write(array $categories, $workDirectory)
     {
         $outputPath = realpath($workDirectory) . '/' . self::OUTPUT_FILE;
+        unlink($outputPath);
 
         foreach ($categories as $category) {
             $csvLine = $this->normalize($category);
-            file_put_contents($outputPath, $csvLine, FILE_APPEND);
+            file_put_contents($outputPath, $csvLine . PHP_EOL, FILE_APPEND);
         }
     }
 
@@ -26,7 +27,7 @@ class CsvWriter implements WriterInterface
      */
     public function normalize(Category $category)
     {
-        $pattern = '%d;%s;%s' . PHP_EOL;
+        $pattern = '%d;%s;%s';
 
         return sprintf($pattern, $category->getId(), $category->getParentId(), $category->getLabel());
     }
